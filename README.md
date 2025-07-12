@@ -1,125 +1,112 @@
-📚 LeetCode Explorer
-A sleek, responsive frontend for documenting LeetCode problem solutions—complete with theme toggles, social links, and beginner-friendly code breakdowns.
+# 📚 LeetCode Explorer
 
-🌐 Live Demo
-Check it out: https://tobilobacodes00.github.io/LeetCode-Explorer/
+A sleek, responsive frontend for documenting LeetCode problem solutions — complete with theme toggles, social links, and beginner-friendly code breakdowns.
 
-🧩 Overview
-LeetCode Explorer is a documentation platform built from scratch (HTML, CSS, vanilla JavaScript) to present clean, readable solutions to LeetCode problems—one problem per page. It features:
+---
 
-🕶 Dark/Light Theme Toggle (Blue themes)
+## 🌐 Live Demo
 
-📱 Responsive design (mobile, tablet, desktop)
+👉 [Visit the site](https://tobilobacodes00.github.io/LeetCode-Explorer/)
 
-🧠 Clear problem breakdown: Intro, statement, example, explanation, solution
+---
 
-📲 Social links for networking and portfolio building
+## 🧩 Overview
 
-🗂️ Project Structure
-vbnet
-Copy
-Edit
+LeetCode Explorer is a personal documentation platform built with **HTML**, **CSS**, and **JavaScript** to showcase LeetCode solutions in a clear, beginner-friendly format.
+
+### 🔥 Key Features
+
+- 🎨 **Dark/Light Blue Theme Toggle**  
+- 💻 **Responsive design** across all screen sizes  
+- 📘 **Detailed breakdowns**: Intro, statement, example, explanation, solution  
+- 🔗 **Social profile links**
+
+---
+
+## 🗂️ Project Structure
+
 LeetCode-Explorer/
-├── index.html                ← Homepage
+├── index.html # Homepage
 ├── problems/
-│   └── question-1.html       ← Problem 2667 (Hello World Function)
-├── styles.css                ← Shared CSS & theming
-├── script.js                 ← Theme toggler & small behaviors
-└── LICENSE                   ← MIT license
-🚀 Features
-🎨 Light & Dark Blue Themes
-Smoothly switch themes while preserving readability and contrast.
+│ └── question-1.html # Problem 2667 (Create Hello World Function)
+├── styles.css # Global styles + themes
+├── script.js # Theme toggle logic
+└── LICENSE # MIT License
 
-📐 Responsive
-Fluid layouts, flexible header, and mobile-aligned elements.
-
-📘 LeetCode Breakdown Format
-Structured sections: Introduction, Statement, Example, Explanation, Solution.
-
-🔗 Social & Navigation
-Easily navigate home/problems and connect via social platforms.
-
-🛠️ How to Use
-Clone repository
-
-bash
+yaml
 Copy
 Edit
+
+---
+
+## 🚀 How to Use
+
+1. **Clone the repository**
+
+```bash
 git clone https://github.com/tobilobacodes00/LeetCode-Explorer.git
 cd LeetCode-Explorer
-Open in browser
+Open in Browser
 
-Double-click index.html, or
+Open index.html directly, or
 
-Serve locally with a simple HTTP server:
+Use a local server:
 
 bash
 Copy
 Edit
 npx http-server . -o
-Explore the site
+Browse and Learn
 
-Toggle between light/dark themes
+Use the navigation to access problems
 
-Click through problem pages
+Toggle light/dark themes
 
-Inspect how explanations and code are structured
+Explore each problem's code breakdown
 
-🧃 Add a New Problem
-Create a new HTML file in /problems/, e.g., question-2.html
+📘 Adding a New Problem
+Create a new file in /problems/, e.g. question-2.html
 
-Copy the format from question-1.html:
+Copy the structure from question-1.html
 
-Add <link rel="stylesheet" href="../styles.css">
+Link the new file on the homepage (index.html)
 
-Structured sections (Intro → Solution)
-
-Link it on homepage (index.html)
-
-Commit & push:
+Commit and push:
 
 bash
 Copy
 Edit
 git add .
-git commit -m "Add problem 0002 – <Your Title>"
+git commit -m "Add problem 0002 – Your Title"
 git push
-📦 Technologies
-HTML5 – semantic markup
+📦 Built With
+HTML5
 
-CSS3 – theming, variables, media queries
+CSS3 (variables, media queries)
 
-JavaScript – vanilla ES6 for theme toggling
+JavaScript (ES6)
 
-Font Awesome – icons for visuals
+Font Awesome (icons)
 
-GitHub Pages – static site hosting
+GitHub Pages (for hosting)
 
 📄 License
-Published under the MIT License. Feel free to reuse the layout, markup, theming, and docs!
+This project is licensed under the MIT License.
 
 👤 Author
 Tobiloba Sulaimon
-Frontend enthusiast building clean, responsive web experiences.
+Frontend Developer | LeetCode Documenter
 
-🔗 Portfolio
+🔮 Future Enhancements
+Add more problem pages
 
-✉️ Pronouns: He/Him
+Improve mobile navbar experience
 
-🔮 Next Up
-Add more problems, navigation UI
+Add a filter/search feature
 
-Implement search/filter for problem pages
+Enable localStorage to persist theme mode
 
-Polish mobile header with hamburger menu
+💬 Feedback & Contributions
+Feel free to open issues or pull requests.
 
-Experiment with dark-mode auto-switch based on system preference
-
-💬 Feedback & Collaboration
-Found a bug or want to suggest enhancements?
-Let’s connect:
-
-Raise an issue on GitHub
-
-Connect via X/Twitter: @tobilobacodes
-
+If you liked this, connect with me on Twitter/X: @tobilobacodes
