@@ -33,9 +33,7 @@ LeetCode-Explorer/
 ├── script.js # Theme toggle logic
 └── LICENSE # MIT License
 
-yaml
-Copy
-Edit
+
 
 ---
 
@@ -43,7 +41,7 @@ Edit
 
 1. **Clone the repository**
 
-```bash
+
 git clone https://github.com/tobilobacodes00/LeetCode-Explorer.git
 cd LeetCode-Explorer
 Open in Browser
