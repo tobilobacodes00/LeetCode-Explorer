@@ -1,0 +1,239 @@
+:root {
+    /* Light Blue Theme (Default) */
+    --bg-color: #c2e2fa;
+    --text-color: #1a2b4c;
+    --section-bg: #ffffff;
+    --answer-bg: #f0f9ff;
+    --header-bg: #d0e7ff;
+    --logo-bg: #c0ddff;
+    --btn-bg: #0077cc;
+    --btn-hover-bg: #005fa3;
+    --btn-text: #ffffff;
+    --nav-color: #005fa3;
+    --border-color: #aac8e4;
+
+    --heading-font: 'Poppins', sans-serif;
+    --body-font: 'Inter', sans-serif;
+}
+
+body.dark {
+    /* Dark Blue Theme */
+    --bg-color: #0f172a;
+    --text-color: #e2e8f0;
+    --section-bg: #1e293b;
+    --answer-bg: #334155;
+    --header-bg: #1e293b;
+    --logo-bg: #1e40af;
+    --btn-bg: #3b82f6;
+    --btn-hover-bg: #2563eb;
+    --btn-text: #ffffff;
+    --nav-color: #60a5fa;
+    --border-color: #475569;
+}
+
+body {
+    font-family: var(--body-font);
+    margin: 2em;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+h1, h2, h3, .page-title {
+    font-family: var(--heading-font);
+}
+
+.section {
+    margin-bottom: 2em;
+    background-color: var(--section-bg);
+    padding: 1em;
+    border-radius: 8px;
+}
+
+.answer-space {
+    border: 1px dashed var(--border-color);
+    padding: 1em;
+    min-height: 100px;
+    background: var(--answer-bg);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--header-bg);
+    padding: 1em 2em;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 2em;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    background: var(--logo-bg);
+}
+
+.page-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--nav-color);
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--nav-color);
+    font-weight: 500;
+    font-family: var(--body-font);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.7em 1.5em;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    font-family: var(--heading-font);
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: var(--btn-hover-bg);
+}
+
+.toggle-btn {
+    padding: 0.5em 1em;
+    font-size: 0.95em;
+    margin-left: 1em;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+main h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+main p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+ul {
+    margin-top: 0.5em;
+    padding-left: 1.5em;
+}
+
+ul li {
+    margin-bottom: 0.3em;
+    font-size: 1em;
+}
+
+/* ------------------- */
+/* ⚡ MEDIA QUERIES ⚡ */
+/* ------------------- */
+
+@media (max-width: 1024px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1em;
+    }
+
+    .logo-section {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    .btn,
+    .toggle-btn {
+        width: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        margin: 1em;
+    }
+
+    .page-title {
+        font-size: 1.2em;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        gap: 0.8em;
+    }
+
+    .btn,
+    .toggle-btn {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+        width: auto;
+    }
+
+    main h1 {
+        font-size: 1.6em;
+    }
+
+    main p, ul li {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 80px;
+    }
+
+    .page-title {
+        font-size: 1em;
+    }
+
+    .nav-links {
+        align-items: flex-start;
+    }
+
+    .header {
+        padding: 1em;
+    }
+
+    .section {
+        padding: 0.8em;
+    }
+
+    .btn,
+    .toggle-btn {
+        padding: 0.5em 1em;
+        width: auto;
+        font-size: 0.9em;
+    }
+}
