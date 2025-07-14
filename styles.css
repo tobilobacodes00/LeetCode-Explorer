@@ -106,7 +106,9 @@ h1, h2, h3, .page-title {
 }
 
 .btn {
-    display: inline-block;
+    display: block; /* or flex */
+    width: 100%;
+    max-width: 400px;  /* control max size */
     padding: 0.7em 1.5em;
     background-color: var(--btn-bg);
     color: var(--btn-text);
@@ -117,7 +119,10 @@ h1, h2, h3, .page-title {
     transition: background-color 0.3s;
     font-family: var(--heading-font);
     text-align: center;
+    margin: 10px; /* center it if not in flexbox */
+    
 }
+
 
 .btn:hover {
     background-color: var(--btn-hover-bg);
