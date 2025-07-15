@@ -140,6 +140,10 @@ main h1 {
     font-size: 2em;
     margin-bottom: 0.5em;
 }
+pre, pre code {
+  white-space: pre-wrap;       /* Allows lines to wrap as needed */
+}
+
 
 main p {
     font-size: 1.1em;
