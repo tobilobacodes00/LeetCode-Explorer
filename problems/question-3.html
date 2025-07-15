@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>2704. To Be Or Not To Be</title>
+    <link rel="stylesheet" href="../styles.css" />
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="logo-section">
+            <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+            <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+        </div>
+
+        <nav style="display: flex; align-items: center; gap: 1.5em;">
+            <ul class="nav-links">
+                <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+                <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+                <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+            <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+        </nav>
+    </header>
+
+    <main>
+        <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+        <section class="section">
+            <h1>2704. To Be Or Not To Be</h1>
+            <p>
+                In this page, we will discuss LeetCode Problem 2704: <strong>To Be Or Not To Be</strong>.
+                This problem requires you to write a function that helps developers test their code by comparing values.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>📄 Problem Statement</h2>
+            <p>
+                Write a function <code>expect</code> that helps developers test their code. It should take in any value <code>val</code> and return an object with the following two functions:
+            </p>
+            <ul>
+                <li><code>toBe(val)</code> accepts another value and returns <code>true</code> if the two values <code>===</code> each other. If they are not equal, it should throw an error "Not Equal".</li>
+                <li><code>notToBe(val)</code> accepts another value and returns <code>true</code> if the two values <code>!==</code> each other. If they are equal, it should throw an error "Equal".</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>💡 Example</h2>
+            <p>
+                <code>expect(5).toBe(5); // true</code><br>
+                <code>expect(5).notToBe(5); // throws "Equal"</code>
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>🧠 Explanation</h2>
+            <div class="answer-space">
+                <p>
+                    This problem tests your understanding of closures and JavaScript functions. You’re required to return an object containing two methods that perform strict comparison checks, and throw custom errors when the expectations are not met.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>✅ My Solution</h2>
+            <div class="answer-space">
+<pre><code>
+/**
+ * @param {any} val
+ * @return {{
+ *   toBe: (val2: any) => boolean,
+ *   notToBe: (val2: any) => boolean
+ * }}
+ */
+var expect = function(val) {
+    return {
+        toBe: function(val2) {
+            if (val === val2) return true;
+            throw new Error("Not Equal");
+        },
+        notToBe: function(val2) {
+            if (val !== val2) return true;
+            throw new Error("Equal");
+        }
+    };
+};
+</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+        <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
 
