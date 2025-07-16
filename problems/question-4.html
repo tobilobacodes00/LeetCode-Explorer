@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>2665. Counter II</title>
+    <link rel="stylesheet" href="../styles.css" />
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="logo-section">
+            <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+            <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+        </div>
+
+        <nav style="display: flex; align-items: center; gap: 1.5em;">
+            <ul class="nav-links">
+                <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+                <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+                <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+            <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+        </nav>
+    </header>
+
+    <main>
+        <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+        <section class="section">
+            <h1>2665. Counter II</h1>
+            <p>
+                In this page, we will discuss LeetCode Problem 2665: <strong>Counter II</strong>.
+                This problem asks you to implement a counter using closures and return an object with specific methods to increment, decrement, and reset the counter.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>📄 Problem Statement</h2>
+            <p>
+                Write a function <code>createCounter</code> that accepts an initial integer <code>init</code>.
+                It should return an object with the following three functions:
+            </p>
+            <ul>
+                <li><code>increment()</code>: Increases the current value by 1 and returns it.</li>
+                <li><code>decrement()</code>: Decreases the current value by 1 and returns it.</li>
+                <li><code>reset()</code>: Resets the value back to <code>init</code> and returns it.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>💡 Example</h2>
+            <p>
+                <code>const counter = createCounter(5);</code><br>
+                <code>counter.increment(); // 6</code><br>
+                <code>counter.decrement(); // 5</code><br>
+                <code>counter.reset();     // 5</code>
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>🧠 Explanation</h2>
+            <div class="answer-space">
+                <p>
+                    The function uses closures to preserve the state of the counter across method calls.
+                    By keeping a <code>current</code> variable inside the outer function scope, each of the returned methods can modify and access this shared state safely.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>✅ My Solution</h2>
+            <div class="answer-space">
+<pre><code>
+/**
+ * @param {number} init
+ * @return {{
+ *   increment: () => number,
+ *   decrement: () => number,
+ *   reset: () => number
+ * }}
+ */
+var createCounter = function(init) {
+    let current = init;
+
+    return {
+        increment: () => ++current,
+        decrement: () => --current,
+        reset: () => (current = init)
+    };
+};
+</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+        <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
