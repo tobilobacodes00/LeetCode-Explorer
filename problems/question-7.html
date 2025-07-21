@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>2626. Array Reduce Transformation</title>
+    <link rel="stylesheet" href="../styles.css" />
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="logo-section">
+            <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+            <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+        </div>
+
+        <nav style="display: flex; align-items: center; gap: 1.5em;">
+            <ul class="nav-links">
+                <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+                <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+                <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+            <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+        </nav>
+    </header>
+
+    <main>
+        <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+        <section class="section">
+            <h1>2626. Array Reduce Transformation</h1>
+            <p>
+                On this page, we will discuss LeetCode Problem 2626: <strong>Array Reduce Transformation</strong>.
+                This problem challenges your understanding of function application, iteration, and accumulator logic.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>📄 Problem Statement</h2>
+            <p>
+                Given an integer array <code>nums</code>, a reducer function <code>fn</code>, and an initial value <code>init</code>, return the final result obtained by executing the <code>fn</code> function on each element of the array, sequentially, passing in the return value from the calculation on the preceding element.
+            </p>
+            <p>
+                This result is achieved through the following operations:<br>
+                <code>val = fn(init, nums[0])</code>,<br>
+                <code>val = fn(val, nums[1])</code>,<br>
+                <code>val = fn(val, nums[2])</code>,<br>
+                ... until every element in the array has been processed.
+            </p>
+            <p>
+                The ultimate value of <code>val</code> is then returned. If the array is empty, return <code>init</code>.
+            </p>
+            <p><strong>Note:</strong> Solve this without using the built-in <code>Array.reduce</code> method.</p>
+        </section>
+
+        <section class="section">
+            <h2>💡 Example</h2>
+            <p>
+                <strong>Input:</strong><br>
+                <code>nums = [1, 2, 3, 4]</code><br>
+                <code>fn = function sum(acc, curr) { return acc + curr; }</code><br>
+                <code>init = 0</code><br><br>
+                <strong>Output:</strong> <code>10</code>
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>🧠 Explanation</h2>
+            <div class="answer-space">
+                <p>
+                    This problem tests your knowledge of accumulator-based logic. You must loop through the array and apply the reducer function <code>fn</code> to each item, carrying forward the updated result in each iteration.
+                </p>
+                <p>
+                    The first call is <code>fn(init, nums[0])</code>, then the result of that becomes the first argument for the next call: <code>fn(previousResult, nums[1])</code>, and so on.
+                </p>
+                <p>
+                    If <code>nums</code> is empty, you simply return <code>init</code> without any function calls.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>✅ Your Solution</h2>
+            <div class="answer-space">
+<pre><code>
+var reduce = function(nums, fn, init) { 
+    let newInit = init;
+    for(let i = 0; i < nums.length; i++){
+        newInit = fn(newInit, nums[i]);
+    }
+    return newInit;
+};
+</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+        <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
 
