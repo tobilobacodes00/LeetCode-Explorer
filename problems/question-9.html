@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>2703. Return Length of Arguments Passed</title>
+    <link rel="stylesheet" href="../styles.css" />
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="logo-section">
+            <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+            <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+        </div>
+
+        <nav style="display: flex; align-items: center; gap: 1.5em;">
+            <ul class="nav-links">
+                <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+                <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+                <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+            <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+        </nav>
+    </header>
+
+    <main>
+        <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+        
+        <section class="section">
+            <h1>2703. Return Length of Arguments Passed</h1>
+            <p>
+                In this page, we will explore LeetCode Problem 2703: <strong>Return Length of Arguments Passed</strong>.
+                This is a beginner-friendly JavaScript challenge involving rest parameters and argument counting.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>📄 Problem Statement</h2>
+            <p>
+                Write a function <code>argumentsLength</code> that returns the number of arguments passed to it.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>💡 Example</h2>
+            <p>
+                <strong>Input:</strong><br/>
+                <code>argumentsLength(1, 2, 3)</code><br/>
+                <strong>Output:</strong><br/>
+                <code>3</code>
+            </p>
+            <p>
+                <strong>Input:</strong><br/>
+                <code>argumentsLength('a')</code><br/>
+                <strong>Output:</strong><br/>
+                <code>1</code>
+            </p>
+            <p>
+                <strong>Input:</strong><br/>
+                <code>argumentsLength()</code><br/>
+                <strong>Output:</strong><br/>
+                <code>0</code>
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>🧠 Explanation</h2>
+            <div class="answer-space">
+                <p>
+                    The rest parameter syntax <code>...args</code> allows a function to accept an indefinite number of arguments as an array.
+                    Using <code>args.length</code>, we can easily count how many values were passed when the function was called.
+                </p>
+                <p>
+                    This problem tests your understanding of ES6 features like rest parameters.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>✅ Your Solution</h2>
+            <div class="answer-space">
+<pre><code>
+/**
+ * @return {number}
+ */
+var argumentsLength = function(...args) {
+    return args.length;
+};
+</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+        <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+              </html>
