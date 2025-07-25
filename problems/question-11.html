@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>2623. Memoize</title>
+    <link rel="stylesheet" href="../styles.css" />
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="logo-section">
+            <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+            <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+        </div>
+
+        <nav style="display: flex; align-items: center; gap: 1.5em;">
+            <ul class="nav-links">
+                <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+                <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+                <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+            <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+        </nav>
+    </header>
+
+    <main>
+        <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+        
+        <section class="section">
+            <h1>2623. Memoize</h1>
+            <p>
+                On this page, we explore LeetCode Problem 2623: <strong>Memoize</strong>.
+                This problem challenges you to return a memoized version of a given function, caching its output based on input arguments.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>📄 Problem Statement</h2>
+            <p>
+                Given a function <code>fn</code>, return a memoized version of that function.
+                A memoized function is one that stores the result of previous calls and returns the cached result when called with the same inputs again.
+            </p>
+            <p>
+                Assume three possible input functions: <code>sum</code>, <code>fib</code>, and <code>factorial</code>. The inputs are strictly ordered: <code>(2,3)</code> and <code>(3,2)</code> are treated as different.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>💡 Example</h2>
+            <p>
+                <strong>Input:</strong><br/>
+                <code>const memoized = memoize((a, b) => a + b);</code><br/>
+                <code>memoized(2, 3); // 5</code><br/>
+                <code>memoized(2, 3); // 5 (from cache)</code><br/>
+                <code>memoized(3, 2); // 5 (new call)</code>
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>🧠 Explanation</h2>
+            <div class="answer-space">
+                <p>
+                    We use the rest parameter <code>...args</code> to capture all input arguments. Then, we create a unique string key using <code>JSON.stringify(args)</code> and store it in a <code>Map</code>.
+                </p>
+                <p>
+                    When the function is called, we check if the key exists in the cache. If so, return the cached value; if not, compute the result, store it, and return it.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>✅ Your Solution</h2>
+            <div class="answer-space">
+<pre><code>
+/**
+ * @param {Function} fn
+ * @return {Function}
+ */
+function memoize(fn) {
+    const cache = new Map();
+
+    return function(...args) {
+        const key = JSON.stringify(args);
+        if (cache.has(key)) {
+            return cache.get(key);
+        }
+        const result = fn(...args);
+        cache.set(key, result);
+        return result;
+    }
+}
+</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+        <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
