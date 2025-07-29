@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>2715. Timeout Cancellation</title>
+    <link rel="stylesheet" href="../styles.css" />
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="logo-section">
+            <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+            <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+        </div>
+
+        <nav style="display: flex; align-items: center; gap: 1.5em;">
+            <ul class="nav-links">
+                <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+                <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+                <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+            <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+        </nav>
+    </header>
+
+    <main>
+        <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+
+        <section class="section">
+            <h1>2715. Timeout Cancellation</h1>
+            <p>
+                On this page, we explore LeetCode Problem 2715: <strong>Timeout Cancellation</strong>.
+                This problem involves delaying the execution of a function and providing a way to cancel it if needed.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>📄 Problem Statement</h2>
+            <p>
+                Given a function <code>fn</code>, an array of arguments <code>args</code>, and a timeout <code>t</code> in milliseconds, return a cancel function <code>cancelFn</code>.
+            </p>
+            <p>
+                After a delay of <code>cancelTimeMs</code>, the returned cancel function <code>cancelFn</code> will be invoked:
+            </p>
+<pre><code>setTimeout(cancelFn, cancelTimeMs);</code></pre>
+            <p>
+                Initially, the execution of the function <code>fn</code> should be delayed by <code>t</code> milliseconds. If <code>cancelFn</code> is invoked before <code>t</code> milliseconds, it should cancel the delayed execution of <code>fn</code>. Otherwise, <code>fn</code> should be executed with the provided <code>args</code>.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>💡 Example</h2>
+            <p><strong>Input:</strong></p>
+<pre><code>
+const fn = (x) => console.log(x);
+const args = [42];
+const t = 2000;
+const cancelTimeMs = 1000;
+
+const cancelFn = cancellable(fn, args, t);
+setTimeout(cancelFn, cancelTimeMs);
+</code></pre>
+            <p><strong>Output:</strong> <code>undefined</code> (since <code>fn</code> was cancelled before execution)</p>
+        </section>
+
+        <section class="section">
+            <h2>🧠 Explanation</h2>
+            <div class="answer-space">
+                <p>
+                    Use <code>setTimeout</code> to schedule <code>fn(...args)</code> to run after <code>t</code> milliseconds. Capture its timeout ID.
+                    Then return a <code>cancelFn</code> function that clears the timeout using <code>clearTimeout</code>. If <code>cancelFn</code> is called before <code>t</code> ms, it will cancel the function from running.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>✅ Your Solution</h2>
+            <div class="answer-space">
+<pre><code>
+/**
+ * @param {Function} fn
+ * @param {Array} args
+ * @param {number} t
+ * @return {Function}
+ */
+var cancellable = function(fn, args, t) {
+    const timeoutId = setTimeout(() => {
+        fn(...args);
+    }, t);
+
+    return function cancelFn() {
+        clearTimeout(timeoutId);
+    };
+};
+</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+        <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
