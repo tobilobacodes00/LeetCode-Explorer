@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2622. Cache With Time Limit</title>
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo-section">
+      <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+      <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+    </div>
+
+    <nav style="display: flex; align-items: center; gap: 1.5em;">
+      <ul class="nav-links">
+        <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+        <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+        <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+      <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+
+    <section class="section">
+      <h1>2622. Cache With Time Limit</h1>
+      <p>
+        In this challenge, you must implement a time-based cache. Each key-value pair has an associated expiration duration, after which it becomes inaccessible.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>📄 Problem Statement</h2>
+      <p>
+        Write a class that allows getting and setting key-value pairs, however a time until expiration is associated with each key.
+      </p>
+      <p>
+        The class has three public methods:
+      </p>
+      <ul>
+        <li><code>set(key, value, duration)</code>: Accepts an integer key, an integer value, and a duration in milliseconds. Once the duration has elapsed, the key should be inaccessible. The method should return <code>true</code> if the same un-expired key already exists and <code>false</code> otherwise. Both the value and duration should be overwritten if the key already exists.</li>
+        <li><code>get(key)</code>: If an un-expired key exists, it should return the associated value. Otherwise it should return <code>-1</code>.</li>
+        <li><code>count()</code>: Returns the count of un-expired keys.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>💡 Example</h2>
+      <p><strong>Input:</strong></p>
+<pre><code>
+const cache = new TimeLimitedCache();
+
+cache.set(1, 42, 100); // false
+cache.get(1);          // 42
+cache.count();         // 1
+
+setTimeout(() => {
+  console.log(cache.get(1));  // -1
+  console.log(cache.count()); // 0
+}, 150);
+</code></pre>
+      <p><strong>Output:</strong></p>
+      <p><code>false, 42, 1, -1, 0</code></p>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Explanation</h2>
+      <div class="answer-space">
+        <p>
+          We store each key along with its value and expiration timestamp. The <code>set</code> method updates or adds a key with a new value and duration. The <code>get</code> method checks if the key exists and hasn't expired. The <code>count</code> method filters out all expired keys and returns the number of still-active ones.
+        </p>
+        <p>
+          Cleanup happens on-demand during <code>get</code> and <code>count</code>, ensuring memory stays efficient without needing extra timers.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>✅ Your Solution</h2>
+      <div class="answer-space">
+<pre><code>
+class TimeLimitedCache {
+  constructor() {
+    this.cache = new Map();
+  }
+
+  set(key, value, duration) {
+    const now = Date.now();
+    const exists = this.cache.has(key) && this.cache.get(key).expire > now;
+
+    this.cache.set(key, {
+      value,
+      expire: now + duration
+    });
+
+    return exists;
+  }
+
+  get(key) {
+    const now = Date.now();
+    if (this.cache.has(key)) {
+      const entry = this.cache.get(key);
+      if (entry.expire > now) return entry.value;
+      this.cache.delete(key);
+    }
+    return -1;
+  }
+
+  count() {
+    const now = Date.now();
+    let total = 0;
+    for (const [key, { expire }] of this.cache) {
+      if (expire > now) {
+        total++;
+      } else {
+        this.cache.delete(key);
+      }
+    }
+    return total;
+  }
+}
+</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+    <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
