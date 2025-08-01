@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2627. Debounce</title>
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo-section">
+      <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+      <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+    </div>
+
+    <nav style="display: flex; align-items: center; gap: 1.5em;">
+      <ul class="nav-links">
+        <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+        <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+        <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+      <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+
+    <section class="section">
+      <h1>2627. Debounce</h1>
+      <p>
+        In this challenge, you must implement a debounced version of a function. A debounced function delays the execution of the original function until a given time in milliseconds has passed since the last time it was called.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>📄 Problem Statement</h2>
+      <p>
+        Given a function <code>fn</code> and a delay <code>t</code> in milliseconds, return a debounced version of that function. When the debounced function is called, wait for <code>t</code> milliseconds before calling <code>fn</code>. If it’s called again during the delay period, cancel the previous call and restart the timer.
+      </p>
+      <p>The debounced function must preserve the arguments from the most recent call.</p>
+    </section>
+
+    <section class="section">
+      <h2>💡 Example</h2>
+      <p><strong>Scenario:</strong> t = 50ms</p>
+<pre><code>
+// Called at: 30ms, 60ms, 100ms
+// 30ms call → cancelled
+// 60ms call → cancelled
+// 100ms call → runs at 150ms
+</code></pre>
+      <p><strong>Scenario:</strong> t = 35ms</p>
+<pre><code>
+// Called at: 30ms, 60ms, 100ms
+// 30ms call → cancelled
+// 60ms call → runs at 95ms
+// 100ms call → runs at 135ms
+</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Explanation</h2>
+      <div class="answer-space">
+        <p>
+          You use <code>setTimeout</code> to delay execution, and <code>clearTimeout</code> to cancel any previously scheduled execution when a new call happens. This ensures the function is only called once the delay passes without interruption.
+        </p>
+        <p>
+          This technique is commonly used for performance optimization in web apps — for example, delaying API calls while a user types in a search box.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>✅ Your Solution</h2>
+      <div class="answer-space">
+<pre><code>
+// Keep your solution here
+</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+    <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
