@@ -79,7 +79,21 @@
       <h2>✅ Your Solution</h2>
       <div class="answer-space">
 <pre><code>
-// Keep your solution here
+/**
+ * @param {Function} fn
+ * @param {number} t
+ * @return {Function}
+ */
+var debounce = function(fn, t) {
+    let timeout;
+
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            fn(...args);
+        }, t);
+    };
+};
 </code></pre>
       </div>
     </section>
