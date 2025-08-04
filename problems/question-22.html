@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>2619. Array Prototype Last</title>
+  <title>2631. Group By</title>
   <link rel="stylesheet" href="../styles.css" />
 
   <!-- Font Awesome for icons -->
@@ -31,30 +31,35 @@
     <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
 
     <section class="section">
-      <h1>2619. Array Prototype Last</h1>
+      <h1>2631. Group By</h1>
       <p>
-        Enhance all JavaScript arrays by adding a <code>last()</code> method that returns the last element in the array. If the array is empty, return <code>-1</code>.
+        Enhance all arrays in JavaScript so that you can call <code>array.groupBy(fn)</code>. It should return an object grouping the items in the array based on the callback's returned key.
       </p>
     </section>
 
     <section class="section">
       <h2>📄 Problem Statement</h2>
       <p>
-        Add a method <code>last()</code> to <code>Array.prototype</code> so that it can be called on any array instance. The method should return:
+        Add a method <code>groupBy(fn)</code> to <code>Array.prototype</code>. The method should:
       </p>
       <ul>
-        <li>The last element of the array if it exists.</li>
-        <li><code>-1</code> if the array is empty.</li>
+        <li>Call <code>fn(element)</code> for each item in the array.</li>
+        <li>Group elements that return the same key into the same array.</li>
+        <li>Return an object where each key maps to an array of grouped items.</li>
       </ul>
-      <p>This assumes the array is a valid result of <code>JSON.parse</code>.</p>
+      <p>
+        ❌ Do not use <code>_.groupBy</code> from Lodash or any third-party library.
+      </p>
     </section>
 
     <section class="section">
       <h2>💡 Example</h2>
 <pre><code>
-[].last();           // ➞ -1
-[1, 2, 3].last();    // ➞ 3
-["a", "b"].last();   // ➞ "b"
+[1,2,3,4,5].groupBy(n => n % 2 === 0 ? "even" : "odd")
+// ➞ { "odd": [1, 3, 5], "even": [2, 4] }
+
+["apple", "banana", "apricot"].groupBy(word => word[0])
+// ➞ { "a": ["apple", "apricot"], "b": ["banana"] }
 </code></pre>
     </section>
 
@@ -62,10 +67,10 @@
       <h2>🧠 Explanation</h2>
       <div class="answer-space">
         <p>
-          By modifying <code>Array.prototype</code>, we can add a custom method that becomes available to all arrays. We simply check the length of the array and return either the last element or <code>-1</code> if empty.
+          The method loops through the array, applies the callback function to each element to determine its key, then pushes that element into the correct array inside a result object.
         </p>
         <p>
-          This approach is useful when you want to extend built-in behavior cleanly, but in production code, prototype modifications should be done cautiously to avoid conflicts.
+          If the key hasn't been seen before, initialize it with an empty array first.
         </p>
       </div>
     </section>
@@ -75,10 +80,21 @@
       <div class="answer-space">
 <pre><code>
 /**
- * @return {any}
+ * @param {Function} fn
+ * @return {Object}
  */
-Array.prototype.last = function() {
-    return this.length ? this[this.length - 1] : -1;
+Array.prototype.groupBy = function(fn) {
+    const result = {};
+
+    for (const item of this) {
+        const key = fn(item);
+        if (!result[key]) {
+            result[key] = [];
+        }
+        result[key].push(item);
+    }
+
+    return result;
 };
 </code></pre>
       </div>
@@ -89,5 +105,6 @@ Array.prototype.last = function() {
     <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
   </footer>
 
-  <sc
-
+  <script src="../script.js"></script>
+</body>
+</html>
