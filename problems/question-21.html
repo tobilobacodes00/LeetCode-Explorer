@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2677. Chunk Array</title>
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo-section">
+      <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+      <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+    </div>
+
+    <nav style="display: flex; align-items: center; gap: 1.5em;">
+      <ul class="nav-links">
+        <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+        <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+        <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+      <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+
+    <section class="section">
+      <h1>2677. Chunk Array</h1>
+      <p>
+        Given an array <code>arr</code> and an integer <code>size</code>, split the array into chunks (subarrays), each of length <code>size</code>. The final chunk may be shorter if <code>arr.length</code> isn't evenly divisible by <code>size</code>.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>📄 Problem Statement</h2>
+      <p>
+        Implement a function <code>chunk(arr, size)</code> that returns a new array, where each element is a chunk (subarray) of length <code>size</code>. Do not use Lodash’s <code>_.chunk</code>.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>💡 Example</h2>
+<pre><code>
+chunk([1, 2, 3, 4, 5], 2)
+// ➞ [[1, 2], [3, 4], [5]]
+
+chunk([1, 9, 6, 3, 2], 3)
+// ➞ [[1, 9, 6], [3, 2]]
+
+chunk([8, 5, 3, 2, 6], 6)
+// ➞ [[8, 5, 3, 2, 6]]
+
+chunk([], 1)
+// ➞ []
+</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Explanation</h2>
+      <div class="answer-space">
+        <p>
+          You loop through the array and slice out subarrays of length <code>size</code> using a step increment of <code>size</code>. The final chunk may be shorter if there aren't enough remaining elements.
+        </p>
+        <p>
+          This is a clean way to group array elements without using external libraries.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>✅ Your Solution</h2>
+      <div class="answer-space">
+<pre><code>
+/**
+ * @param {Array} arr
+ * @param {number} size
+ * @return {Array}
+ */
+var chunk = function(arr, size) {
+    const result = [];
+
+    for (let i = 0; i < arr.length; i += size) {
+        result.push(arr.slice(i, i + size));
+    }
+
+    return result;
+};
+</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+    <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
