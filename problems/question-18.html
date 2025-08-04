@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2721. Execute Async Functions in Parallel</title>
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo-section">
+      <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+      <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+    </div>
+
+    <nav style="display: flex; align-items: center; gap: 1.5em;">
+      <ul class="nav-links">
+        <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+        <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+        <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+      <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+
+    <section class="section">
+      <h1>2721. Execute Asynchronous Functions in Parallel</h1>
+      <p>
+        In this challenge, you must implement a function that accepts an array of asynchronous functions and executes them all in parallel, returning a single Promise.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>📄 Problem Statement</h2>
+      <p>
+        Given an array of functions <code>functions</code>, each returning a Promise, return a new Promise that:
+      </p>
+      <ul>
+        <li>Resolves when all Promises resolve successfully. The resolved value must be an array of their results in order.</li>
+        <li>Rejects immediately if any Promise rejects, with the reason of the first rejection.</li>
+      </ul>
+      <p>🚫 <strong>Do not use</strong> <code>Promise.all</code>.</p>
+    </section>
+
+    <section class="section">
+      <h2>💡 Example</h2>
+<pre><code>
+const asyncFunc1 = () => new Promise(res => setTimeout(() => res("A"), 100));
+const asyncFunc2 = () => new Promise(res => setTimeout(() => res("B"), 50));
+
+executeFunctionsInParallel([asyncFunc1, asyncFunc2])
+  .then(console.log); // ["A", "B"]
+</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Explanation</h2>
+      <div class="answer-space">
+        <p>
+          You manually track the results and completions of each Promise. You also monitor for rejection. Once all promises are resolved, the main Promise resolves with the ordered results.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>✅ Your Solution</h2>
+      <div class="answer-space">
+<pre><code>
+/**
+ * @param {Array<() => Promise>} functions
+ * @return {Promise}
+ */
+var executeFunctionsInParallel = function(functions) {
+    return new Promise((resolve, reject) => {
+        const results = [];
+        let completed = 0;
+        let hasError = false;
+
+        functions.forEach((fn, i) => {
+            fn()
+                .then((val) => {
+                    if (hasError) return;
+                    results[i] = val;
+                    completed++;
+                    if (completed === functions.length) {
+                        resolve(results);
+                    }
+                })
+                .catch((err) => {
+                    if (!hasError) {
+                        hasError = true;
+                        reject(err);
+                    }
+                });
+        });
+    });
+};
+</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+    <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
