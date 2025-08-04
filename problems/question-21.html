@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>2677. Chunk Array</title>
+  <title>2619. Array Prototype Last</title>
   <link rel="stylesheet" href="../styles.css" />
 
   <!-- Font Awesome for icons -->
@@ -31,33 +31,30 @@
     <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
 
     <section class="section">
-      <h1>2677. Chunk Array</h1>
+      <h1>2619. Array Prototype Last</h1>
       <p>
-        Given an array <code>arr</code> and an integer <code>size</code>, split the array into chunks (subarrays), each of length <code>size</code>. The final chunk may be shorter if <code>arr.length</code> isn't evenly divisible by <code>size</code>.
+        Enhance all JavaScript arrays by adding a <code>last()</code> method that returns the last element in the array. If the array is empty, return <code>-1</code>.
       </p>
     </section>
 
     <section class="section">
       <h2>📄 Problem Statement</h2>
       <p>
-        Implement a function <code>chunk(arr, size)</code> that returns a new array, where each element is a chunk (subarray) of length <code>size</code>. Do not use Lodash’s <code>_.chunk</code>.
+        Add a method <code>last()</code> to <code>Array.prototype</code> so that it can be called on any array instance. The method should return:
       </p>
+      <ul>
+        <li>The last element of the array if it exists.</li>
+        <li><code>-1</code> if the array is empty.</li>
+      </ul>
+      <p>This assumes the array is a valid result of <code>JSON.parse</code>.</p>
     </section>
 
     <section class="section">
       <h2>💡 Example</h2>
 <pre><code>
-chunk([1, 2, 3, 4, 5], 2)
-// ➞ [[1, 2], [3, 4], [5]]
-
-chunk([1, 9, 6, 3, 2], 3)
-// ➞ [[1, 9, 6], [3, 2]]
-
-chunk([8, 5, 3, 2, 6], 6)
-// ➞ [[8, 5, 3, 2, 6]]
-
-chunk([], 1)
-// ➞ []
+[].last();           // ➞ -1
+[1, 2, 3].last();    // ➞ 3
+["a", "b"].last();   // ➞ "b"
 </code></pre>
     </section>
 
@@ -65,10 +62,10 @@ chunk([], 1)
       <h2>🧠 Explanation</h2>
       <div class="answer-space">
         <p>
-          You loop through the array and slice out subarrays of length <code>size</code> using a step increment of <code>size</code>. The final chunk may be shorter if there aren't enough remaining elements.
+          By modifying <code>Array.prototype</code>, we can add a custom method that becomes available to all arrays. We simply check the length of the array and return either the last element or <code>-1</code> if empty.
         </p>
         <p>
-          This is a clean way to group array elements without using external libraries.
+          This approach is useful when you want to extend built-in behavior cleanly, but in production code, prototype modifications should be done cautiously to avoid conflicts.
         </p>
       </div>
     </section>
@@ -78,18 +75,10 @@ chunk([], 1)
       <div class="answer-space">
 <pre><code>
 /**
- * @param {Array} arr
- * @param {number} size
- * @return {Array}
+ * @return {any}
  */
-var chunk = function(arr, size) {
-    const result = [];
-
-    for (let i = 0; i < arr.length; i += size) {
-        result.push(arr.slice(i, i + size));
-    }
-
-    return result;
+Array.prototype.last = function() {
+    return this.length ? this[this.length - 1] : -1;
 };
 </code></pre>
       </div>
