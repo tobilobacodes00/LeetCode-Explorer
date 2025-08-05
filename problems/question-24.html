@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2722. Join Two Arrays by ID</title>
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo-section">
+      <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+      <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+    </div>
+
+    <nav style="display: flex; align-items: center; gap: 1.5em;">
+      <ul class="nav-links">
+        <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+        <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+        <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+      <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+
+    <section class="section">
+      <h1>2722. Join Two Arrays by ID</h1>
+      <p>
+        Given two arrays <code>arr1</code> and <code>arr2</code> of objects, merge them into a new array based on their <code>id</code> property. If two objects share the same <code>id</code>, combine their properties with <code>arr2</code>'s values taking precedence.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>📄 Problem Statement</h2>
+      <p>
+        Each object in <code>arr1</code> and <code>arr2</code> contains a numeric <code>id</code> field.
+      </p>
+      <ul>
+        <li>Merge objects with the same <code>id</code>.</li>
+        <li>Include properties from both objects. If a key exists in both, <code>arr2</code>'s value overrides.</li>
+        <li>If an <code>id</code> only appears in one array, include that object as is.</li>
+        <li>The result array should be sorted by <code>id</code> in ascending order.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>💡 Example</h2>
+<pre><code>
+arr1 = [
+  {"id": 1, "x": 1},
+  {"id": 2, "x": 9}
+]
+
+arr2 = [
+  {"id": 2, "y": 10},
+  {"id": 3, "z": 5}
+]
+
+joinArrays(arr1, arr2)
+// ➞ [
+//   {"id": 1, "x": 1},
+//   {"id": 2, "x": 9, "y": 10},
+//   {"id": 3, "z": 5}
+// ]
+</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Explanation</h2>
+      <div class="answer-space">
+        <p>
+          Use a map to store objects by their <code>id</code>. Loop through both arrays, and for each object:
+        </p>
+        <ul>
+          <li>If <code>id</code> already exists, merge the current object into the existing one (with arr2 overriding arr1).</li>
+          <li>Else, add it to the map.</li>
+        </ul>
+        <p>
+          After processing, convert the map’s values to an array and sort by <code>id</code>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>✅ Your Solution</h2>
+      <div class="answer-space">
+<pre><code>
+/**
+ * @param {Array} arr1
+ * @param {Array} arr2
+ * @return {Array}
+ */
+function joinArrays(arr1, arr2) {
+    const map = new Map();
+
+    for (const obj of arr1) {
+        map.set(obj.id, { ...obj });
+    }
+
+    for (const obj of arr2) {
+        if (map.has(obj.id)) {
+            map.set(obj.id, { ...map.get(obj.id), ...obj });
+        } else {
+            map.set(obj.id, { ...obj });
+        }
+    }
+
+    return Array.from(map.values()).sort((a, b) => a.id - b.id);
+}
+</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+    <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
