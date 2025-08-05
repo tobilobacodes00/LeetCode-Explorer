@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2705. Compact Object</title>
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo-section">
+      <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+      <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+    </div>
+
+    <nav style="display: flex; align-items: center; gap: 1.5em;">
+      <ul class="nav-links">
+        <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+        <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+        <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+      <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+
+    <section class="section">
+      <h1>2705. Compact Object</h1>
+      <p>
+        Given a JSON-compatible object or array <code>obj</code>, return a compact version of the object — one without any <strong>falsy</strong> values at any level.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>📄 Problem Statement</h2>
+      <p>
+        A compact object is one that has all falsy values removed recursively:
+      </p>
+      <ul>
+        <li>Falsy values include: <code>false</code>, <code>0</code>, <code>""</code>, <code>null</code>, <code>undefined</code>, and <code>NaN</code>.</li>
+        <li>Nested objects and arrays must also be compacted.</li>
+        <li>The input is guaranteed to be valid JSON (i.e., no functions or undefined outside of parsing context).</li>
+        <li>Arrays are treated as objects with numeric keys and must also be filtered.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>💡 Example</h2>
+<pre><code>
+const obj = {
+  a: null,
+  b: [false, 1],
+  c: {
+    d: 0,
+    e: "test",
+    f: {
+      g: NaN,
+    }
+  }
+};
+
+compactObject(obj);
+// ➞ {
+//   b: [1],
+//   c: {
+//     e: "test"
+//   }
+// }
+</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Explanation</h2>
+      <div class="answer-space">
+        <p>
+          Recursively iterate through all keys of the object:
+        </p>
+        <ul>
+          <li>If the value is an object or array, apply <code>compactObject()</code> recursively.</li>
+          <li>If the result is still truthy, include it in the result.</li>
+          <li>For arrays, only keep values that are truthy or resolve to truthy after recursion.</li>
+        </ul>
+        <p>
+          The logic leverages <code>Boolean(value)</code> to check for truthiness.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>✅ Your Solution</h2>
+      <div class="answer-space">
+<pre><code>
+/**
+ * @param {Object|Array} obj
+ * @return {Object|Array}
+ */
+var compactObject = function(obj) {
+    if (Array.isArray(obj)) {
+        return obj
+            .map(item => compactObject(item))
+            .filter(Boolean);
+    } else if (obj !== null && typeof obj === "object") {
+        const res = {};
+        for (const [key, value] of Object.entries(obj)) {
+            const compacted = compactObject(value);
+            if (Boolean(compacted)) {
+                res[key] = compacted;
+            }
+        }
+        return res;
+    }
+    return obj;
+};
+</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+    <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
