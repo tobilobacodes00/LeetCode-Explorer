@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2625. Flatten Deeply Nested Array</title>
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo-section">
+      <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+      <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+    </div>
+
+    <nav style="display: flex; align-items: center; gap: 1.5em;">
+      <ul class="nav-links">
+        <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+        <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+        <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+      <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+
+    <section class="section">
+      <h1>2625. Flatten Deeply Nested Array</h1>
+      <p>
+        Given a multi-dimensional array <code>arr</code> and a depth <code>n</code>, return a version of the array flattened to that depth. Do not use <code>Array.prototype.flat()</code>.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>📄 Problem Statement</h2>
+      <p>
+        A multi-dimensional array contains integers or other nested arrays. Flattening means replacing those nested arrays with their elements.
+      </p>
+      <ul>
+        <li>Flatten only up to the given depth <code>n</code>.</li>
+        <li>The initial array has depth 0. Nested elements increase in depth as you go deeper.</li>
+        <li>You must not use the built-in <code>flat()</code> method.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>💡 Example</h2>
+<pre><code>
+arr = [1, [2, [3, [4]], 5]]
+n = 1
+// ➞ [1, 2, [3, [4]], 5]
+
+n = 2
+// ➞ [1, 2, 3, [4], 5]
+
+n = 3
+// ➞ [1, 2, 3, 4, 5]
+</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Explanation</h2>
+      <div class="answer-space">
+        <p>
+          Recursively loop through the array. For each element:
+        </p>
+        <ul>
+          <li>If it’s an array and depth is not yet exhausted, flatten it one level deeper.</li>
+          <li>Otherwise, push it to the result as-is.</li>
+        </ul>
+        <p>
+          Keep track of the current depth and stop when it equals the specified limit.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>✅ Your Solution</h2>
+      <div class="answer-space">
+<pre><code>
+/**
+ * @param {Array} arr
+ * @param {number} depth
+ * @return {Array}
+ */
+function flat(arr, depth) {
+    const result = [];
+
+    for (const item of arr) {
+        if (Array.isArray(item) && depth > 0) {
+            result.push(...flat(item, depth - 1));
+        } else {
+            result.push(item);
+        }
+    }
+
+    return result;
+}
+</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+    <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
