@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2694. Event Emitter</title>
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo-section">
+      <img src="https://i.postimg.cc/tRZK9gxF/tobiloba-Codes-logo-1.png" alt="tobilobaCodes logo" class="logo">
+      <span class="page-title">TobilobaCodes – LeetCode Explorer</span>
+    </div>
+
+    <nav style="display: flex; align-items: center; gap: 1.5em;">
+      <ul class="nav-links">
+        <li><a href="https://x.com/tobilobacodes" target="_blank"><i class="fab fa-x-twitter"></i></a></li>
+        <li><a href="https://github.com/tobilobacodes" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://linkedin.com/in/tobilobacodes" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+        <li><a href="https://instagram.com/tobilobacodes" target="_blank"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+      <button id="themeToggle" class="btn toggle-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <a href="../index.html"><button class="btn" style="margin: 20px;">Home</button></a>
+
+    <section class="section">
+      <h1>2694. Event Emitter</h1>
+      <p>
+        Implement a custom <code>EventEmitter</code> class to support subscribing to events and emitting them later.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>📄 Problem Statement</h2>
+      <ul>
+        <li><strong>subscribe(eventName, callback):</strong> Adds a callback to the specified event. Returns an object with an <code>unsubscribe()</code> method to remove the listener.</li>
+        <li><strong>emit(eventName, args):</strong> Calls all subscribed callbacks for the event in the order they were added. Returns an array of their results.</li>
+      </ul>
+      <p>⚠️ If no callbacks exist for the event, return an empty array. Each callback is guaranteed to be unique (no duplicates).</p>
+    </section>
+
+    <section class="section">
+      <h2>💡 Example</h2>
+<pre><code>
+const emitter = new EventEmitter();
+
+function onClick(arg) { return `Clicked ${arg}`; }
+function onHover(arg) { return `Hovered ${arg}`; }
+
+const sub1 = emitter.subscribe("click", onClick);
+const sub2 = emitter.subscribe("click", onHover);
+
+emitter.emit("click", [1]);
+// ➞ ["Clicked 1", "Hovered 1"]
+
+sub1.unsubscribe();
+emitter.emit("click", [2]);
+// ➞ ["Hovered 2"]
+</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>🧠 Explanation</h2>
+      <div class="answer-space">
+        <p>
+          We store a map of events to an array of listener objects. Each subscription is wrapped in a closure so it can be cleanly removed later using <code>unsubscribe()</code>.
+        </p>
+        <p>
+          On emitting an event, we iterate through all relevant callbacks, passing in the arguments and collecting their return values.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>✅ Your Solution</h2>
+      <div class="answer-space">
+<pre><code>
+class EventEmitter {
+  constructor() {
+    this.events = {};
+  }
+
+  subscribe(eventName, callback) {
+    if (!this.events[eventName]) {
+      this.events[eventName] = [];
+    }
+
+    const listener = { callback };
+    this.events[eventName].push(listener);
+
+    return {
+      unsubscribe: () => {
+        this.events[eventName] = this.events[eventName].filter(
+          l => l !== listener
+        );
+      }
+    };
+  }
+
+  emit(eventName, args = []) {
+    if (!this.events[eventName]) {
+      return [];
+    }
+
+    return this.events[eventName].map(listener => listener.callback(...args));
+  }
+}
+</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section" style="border-top: 1px solid #ccc; padding-top: 1em; margin-top: 3em;">
+    <p style="text-align: center; color: #555;">&copy; 2025 TobilobaCodes. Built with 💻 & dedication.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
